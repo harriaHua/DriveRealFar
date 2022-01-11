@@ -4,7 +4,7 @@
  * @Author: Harria
  * @Date: 2021-12-31 12:01:36
  * @LastEditors: Harria
- * @LastEditTime: 2022-01-11 17:34:10
+ * @LastEditTime: 2022-01-11 19:25:34
  */
 // import "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js";
 
@@ -33,6 +33,11 @@ $("body").append(`
   </div>
 </div> 
 `);
+$("#footer").append(
+  `
+    <a href="https://github.com/harriaHua/cnblogs-theme-DriveRealFar">🎨 Theme DriveRealFar</a>
+  `
+);
 
 //滚动滑轮触发  scrollProggressBar方法 //ie 谷歌
 addMoveListen(scrollProggressBar);

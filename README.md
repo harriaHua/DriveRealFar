@@ -1,6 +1,48 @@
 # DriveRealFar
 一款博客园主题，给自己做的，有兴趣就拿去用吧
 
+
+
+>[ Honey Take My Hand ](https://music.163.com/song?id=1312528250&userid=279721043)
+>
+>Pack our bags and get in that car
+>
+>收拾行李上那辆车
+>
+>Leave a little note and we'll drive real far
+>
+>留个小纸条，我们会开很远的
+>
+>Let's get out, we can leave this city
+>
+>我们出去吧，我们可以离开这个城市
+>
+>Let's drive to the open air
+>
+>我们开车到露天去吧
+>
+>Yeah the countryside is so pretty
+>
+>是的，乡村很漂亮
+>
+>With the wind blowing in your hair
+>
+>风吹过你的头发
+>
+>We can look back some day
+>
+>我们总有一天会回顾过去的
+>
+>Baby don't you understand?
+>
+>宝贝，难道你不明白吗?
+>
+>That we only get one life, I wanna make it count
+>
+>我们只有一次生命，我想让它有意义
+>
+>
+
 ## 特性
 
 - 明暗两种模式
@@ -9,7 +51,7 @@
 
 ## 模样
 
-![image-20220111191800542](C:\Users\Morxio\AppData\Roaming\Typora\typora-user-images\image-20220111191800542.png)
+![image-20220111191800542](https://s3.bmp.ovh/imgs/2022/01/d8299a7e32c0ce8d.png)
 
 ## 前提说明
 
