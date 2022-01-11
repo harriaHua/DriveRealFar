@@ -1,0 +1,51 @@
+.day {
+  border-bottom: 3px solid var(--boder-color);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  .dayTitle {
+    margin-bottom: 10px;
+    font-size: x-large;
+  }
+  .postTitle {
+    margin-bottom: 10px;
+    font-size: large;
+  }
+  .c_b_p_desc {
+    .c_b_p_desc_readmore {
+      // padding: 10px 0;
+      padding-top: 10px;
+      padding-left: 0;
+      display: block;
+    }
+  }
+  .postDesc {
+    border-bottom: 3px dashed var(--boder-color);
+    padding-bottom: 10px;
+    margin: 10px 0;
+    text-align: end;
+
+    &:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    // .post-view-count {
+    //   float: right;
+    // }
+    .post-view-count::before {
+      content: "👀";
+      padding-left: 10px;
+      padding-right: 5px;
+    }
+    .post-comment-count::before {
+      content: "💬";
+      padding-left: 10px;
+      padding-right: 5px;
+    }
+    .post-digg-count::before {
+      content: "👍";
+      padding-left: 10px;
+      padding-right: 5px;
+    }
+  }
+}
