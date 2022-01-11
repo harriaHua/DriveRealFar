@@ -4,7 +4,7 @@
  * @Author: Harria
  * @Date: 2021-12-31 12:01:36
  * @LastEditors: Harria
- * @LastEditTime: 2022-01-11 19:25:34
+ * @LastEditTime: 2022-01-11 22:55:35
  */
 // import "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js";
 
@@ -271,15 +271,15 @@ function dic_affix() {
       $("#my-directory").css({
         position: "fixed",
         top: "80px",
-        left: "100%",
-        transform: "translateX(-100%)",
+        right: "15px",
+        transform: "translateX(0)",
       });
     } else {
       $("#my-directory").css({
         position: "absolute",
-        left: "100%",
+        right: "15px",
         top: "20vh",
-        transform: "translateX(0)",
+        transform: "translateX(100%)",
       });
     }
   }, 50);
@@ -462,7 +462,7 @@ function setLoading() {
   $(".day .clear:last-of-type").css("opacity", "0");
   setTimeout(() => {
     $(".post > .clear ").remove();
-    $(".postBody > .clear ").remove();
+    // $(".postBody > .clear ").remove();
     $("#load-container").remove();
     $(".day .clear:last-of-type").remove();
   }, 2000);
