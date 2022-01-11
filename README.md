@@ -1,10 +1,5 @@
 # DriveRealFar
-<<<<<<< HEAD
-一款博客园主题
-=======
 一款博客园主题，给自己做的，有兴趣就拿去用吧
-
-
 
 >[ Honey Take My Hand ](https://music.163.com/song?id=1312528250&userid=279721043)
 >
@@ -54,7 +49,7 @@
 
 ## 模样
 
-![image-20220111191800542](https://i.bmp.ovh/imgs/2022/01/b057040b70d9a8c7.png)
+![image-20220111191800542](https://i.bmp.ovh/imgs/2022/01/bb62f7e2cceacebf.png)
 
 ## 前提说明
 
@@ -69,7 +64,7 @@
 后面的hljs都是代码高亮样式
 
 ```css
-.postBody > .clear {
+/* .postBody > .clear {
   position: fixed;
   top: 0;
   left: 0;
@@ -78,7 +73,7 @@
   background-color: rgb(240, 255, 255);
   opacity: 1;
   transition: opacity 1s;
-}
+} */
 .post > .clear {
   position: fixed;
   top: 0;
@@ -222,32 +217,35 @@ span.cnb-code-toolbar-item:hover {
         "ms"
     );
     });
-        //这里需要修改
+    // 这里需要修改
     document.write(
-      '<link href="https://blog-static.cnblogs.com/files/blogs/723350/computer17.css" rel="stylesheet" type="text/css" media="screen" />'
+      '<link href="https://blog-static.cnblogs.com/files/blogs/723350/computer_beta1.0.css" rel="stylesheet" type="text/css" media="screen" />'
     );
     if (
     navigator.userAgent.match(
         /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|wOSBrowser|BrowserNG|WebOS)/i
     )
     ) {
-        //这里需要修改
+        // 这里需要修改
     document.write(
-        '<link href="https://blog-static.cnblogs.com/files/blogs/723350/phone11.css" rel="stylesheet" type="text/css" media="screen" />'
+        '<link href="https://blog-static.cnblogs.com/files/blogs/723350/phone_beta1.0.css" rel="stylesheet" type="text/css" media="screen" />'
     );
     console.log("phone");
     } else {
     console.log("computer");
+    // document.write(
+    //   '<link href="./less/index.css" rel="stylesheet" type="text/css" media="screen" />'
+    // );
     }
 </script>
 
 
-
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://unpkg.com/color-js@1.0.3/color.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/ac-colors@1/dist/ac-colors.min.js"></script>
 <script src="https://blog-static.cnblogs.com/files/blogs/723350/jquery.lineProgressbar.js"></script>
-//这里需要修改
-<script type="text/javascript" src="https://blog-static.cnblogs.com/files/blogs/723350/index12.js" ></script>
+// 这里需要修改
+<script type="text/javascript" src="https://blog-static.cnblogs.com/files/blogs/723350/index_beta1.0.js" ></script>
 
 ```
 
@@ -264,4 +262,3 @@ span.cnb-code-toolbar-item:hover {
 ## 最后
 
 疑问可以 `harria.hua@qq.com` 联系我
->>>>>>> 02b34c48b20f8df631f402888195bcd19717768a
