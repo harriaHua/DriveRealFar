@@ -4,7 +4,7 @@
  * @Author: Harria
  * @Date: 2021-12-31 12:01:36
  * @LastEditors: Harria
- * @LastEditTime: 2022-01-11 17:34:10
+ * @LastEditTime: 2022-01-11 23:46:04
  */
 // import "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js";
 
@@ -33,6 +33,11 @@ $("body").append(`
   </div>
 </div> 
 `);
+$("#footer").append(
+  `
+    <a href="https://github.com/harriaHua/cnblogs-theme-DriveRealFar">🎨 Theme DriveRealFar</a>
+  `
+);
 
 //滚动滑轮触发  scrollProggressBar方法 //ie 谷歌
 addMoveListen(scrollProggressBar);
@@ -266,15 +271,15 @@ function dic_affix() {
       $("#my-directory").css({
         position: "fixed",
         top: "80px",
-        left: "100%",
-        transform: "translateX(-100%)",
+        right: "15px",
+        transform: "translateX(0)",
       });
     } else {
       $("#my-directory").css({
         position: "absolute",
-        left: "100%",
+        right: "15px",
         top: "20vh",
-        transform: "translateX(0)",
+        transform: "translateX(100%)",
       });
     }
   }, 50);
@@ -457,7 +462,7 @@ function setLoading() {
   $(".day .clear:last-of-type").css("opacity", "0");
   setTimeout(() => {
     $(".post > .clear ").remove();
-    $(".postBody > .clear ").remove();
+    // $(".postBody > .clear ").remove();
     $("#load-container").remove();
     $(".day .clear:last-of-type").remove();
   }, 2000);

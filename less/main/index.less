@@ -99,11 +99,13 @@ pre {
 }
 #my-directory {
   width: calc(50vw - 400px);
-  min-height: 200px;
-  // background-color: yellow;
+  /* min-height: 200px; */
   position: absolute;
-  left: 100%;
+  /* left: 100%; */
   top: 20vh;
+  right: 15px;
+  max-height: calc(100vh - 160px);
+  overflow-y: scroll;
   transition: top 0.3s;
   .all-directory {
     margin: 10px;
