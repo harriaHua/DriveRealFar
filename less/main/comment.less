@@ -1,0 +1,99 @@
+#blog-comments-placeholder {
+  width: 100%;
+  box-sizing: border-box;
+}
+#blog-comments-placeholder {
+  width: 100%;
+  box-sizing: border-box;
+  .feedback_area_title {
+    margin-bottom: 10px;
+    background-image: none;
+    padding: 0;
+    font-size: x-large;
+  }
+  .feedbackItem {
+    border-bottom: 3px dashed var(--boder-color);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    .feedbackListSubtitle {
+      margin-bottom: 10px;
+      .feedbackManage {
+        width: max-content;
+        float: right;
+      }
+    }
+    .feedbackCon {
+      .blog_comment_body {
+      }
+      .comment_vote {
+        .comment_digg {
+          &::before {
+            content: "👍";
+          }
+        }
+        .comment_burry {
+          &::before {
+            content: "👎";
+          }
+        }
+      }
+    }
+  }
+}
+#comment_form {
+  width: 100%;
+  // padding: 32px;
+  box-sizing: border-box;
+  margin-left: 0;
+  #comment_nav {
+    display: none;
+  }
+  #comment_form_container {
+    #commentform_title {
+      margin-bottom: 10px;
+      background-image: none;
+      padding: 0;
+      font-size: x-large;
+    }
+    .comment_textarea {
+      width: 100%;
+      #tbCommentBody {
+        background: url(https://s3.bmp.ovh/imgs/2022/01/b3726b991a55fee7.png);
+        background-size: 200px;
+        background-repeat: no-repeat;
+        background-position: right bottom;
+      }
+      .commentbox_footer,
+      .commentbox_title {
+        font-size: medium;
+      }
+      .commentbox_tab:hover,
+      .commentbox_tab.active {
+        border-bottom: 2px solid var(--main-color);
+        color: var(--main-color);
+      }
+    }
+    #commentbox_opt {
+      #btn_comment_submit {
+        background-color: var(--main-color);
+        color: var(--word-contrast-color);
+        font-size: small;
+        min-width: 95px;
+        height: 35px;
+        margin-top: 0;
+        padding-top: 0;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        &:hover {
+          background-color: var(--link-color);
+        }
+      }
+    }
+  }
+  #under_post_card1 {
+    display: none;
+  }
+  #under_post_card2 {
+    display: none;
+  }
+}

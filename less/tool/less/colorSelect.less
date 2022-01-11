@@ -1,0 +1,26 @@
+.color-set {
+  position: fixed;
+  z-index: 998;
+  top: 50px;
+  right: 40px;
+  fill: var(--main-color);
+  background-color: var(--blockquote-back-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  &:hover {
+    background-color: var(--main-color);
+    fill: var(--blockquote-back-color);
+  }
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+  #main-color {
+    width: 1px;
+    height: 1px;
+  }
+}

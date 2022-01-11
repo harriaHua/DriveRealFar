@@ -1,0 +1,107 @@
+#blog_post_info_block {
+  border-bottom: 3px solid var(--boder-color);
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  .aCategory {
+    border-radius: 4px;
+    padding: 4px 10px;
+    background-color: var(--blockquote-back-color);
+    margin-right: 5px;
+    transform: none;
+    color: var(--word-color);
+    transition: background-color 0.3s;
+
+    &:hover {
+      color: var(--word-contrast-color);
+      background-color: var(--light-main-color);
+    }
+  }
+  #BlogPostCategory {
+    &::before {
+      content: "📂";
+    }
+    a {
+      .aCategory;
+    }
+  }
+  #EntryTag {
+    &::before {
+      content: "🏷️";
+    }
+    a {
+      .aCategory;
+    }
+  }
+  #blog_post_info {
+    // display: none;
+    #green_channel {
+      display: none;
+      width: 100%;
+      justify-content: space-evenly;
+      border: none;
+      a {
+        // background: none;
+        margin: 0;
+        -webkit-box-shadow: none;
+        -webkit-border-radius: 3px;
+        text-shadow: none;
+        background-image: none;
+      }
+
+      #green_channel_weibo {
+      }
+      #green_channel_wechat {
+      }
+    }
+    #author_profile {
+      display: none;
+    }
+    #div_digg {
+      width: max-content;
+      margin-right: 0;
+      .diggit {
+        background-image: none;
+        min-width: 80px;
+        height: 35px;
+        margin-top: 0;
+        padding-top: 0;
+        // border-radius: 4px;
+        transition: all 0.3s;
+        box-shadow: 0.3em 0.3em 0 0 var(--main-color),
+          inset 0.3em 0.3em 0 0 var(--main-color);
+        &:hover {
+          // background-color: rgb(33, 117, 188);
+          box-shadow: 0 0 0 0 var(--link-color),
+            inset 6em 3.5em 0 0 var(--link-color);
+
+          .diggnum,
+          .burynum {
+            color: var(--word-contrast-color);
+          }
+        }
+        &:before {
+          content: "👍";
+        }
+      }
+
+      .buryit {
+        .diggit;
+
+        margin-left: 30px;
+        &:before {
+          content: "👎";
+        }
+      }
+      .diggnum {
+        .burynum;
+      }
+      .burynum {
+        height: 35px;
+        line-height: 35px !important;
+        vertical-align: middle;
+        transition: color 0.3s;
+        color: var(--word-color);
+      }
+    }
+  }
+}
