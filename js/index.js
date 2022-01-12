@@ -4,16 +4,59 @@
  * @Author: Harria
  * @Date: 2021-12-31 12:01:36
  * @LastEditors: Harria
- * @LastEditTime: 2022-01-11 23:46:04
+ * @LastEditTime: 2022-01-12 17:30:38
  */
 // import "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js";
+let $config = {
+  avatar: "https://s3.bmp.ovh/imgs/2022/01/c5f97d8b0b788deb.png",
+  userLink: "https://www.cnblogs.com/harria/'",
+  ico: "https://files.cnblogs.com/files/blogs/723350/xia.svg",
+  bgm: {
+    link: "https://music.163.com/song/media/outer/url?id=1312528250.mp3",
+    autoPlay: 1,
+    loop: 1,
+    volume: 0.1, // 0~1
+  },
+  color: {
+    defaultColor: "#202020",
+    localStorage: 1,
+  },
+  mode: {
+    defaultMode: "dark", // light | dark | auto
+    localStorage: 1, // 0 | 1
+    province: "上海",
+  },
+};
 
-// console.log($("body"));
 let directoryTop = "";
 let musicState = 0;
-// let lightState = 1;
-let lightState = localStorage.getItem("lightState") == "true" ? true : false;
-let mainColor16 = localStorage.getItem("mainColor16") ?? "#2175bc";
+let mode = "";
+switch ($config.mode.defaultMode) {
+  case "light":
+  case "dark":
+    if ($config.mode.localStorage) {
+      mode = localStorage.getItem("mode") ?? $config.mode.defaultMode;
+    } else {
+      mode = $config.mode.defaultMode;
+    }
+    break;
+  case "auto":
+    mode = getThemeDependDay($config.mode.province);
+    break;
+
+  default:
+    mode = getThemeDependDay($config.mode.province);
+    break;
+}
+let currentMode = mode;
+
+let mainColor16 = "";
+if ($config.color.localStorage) {
+  mainColor16 =
+    localStorage.getItem("mainColor16") ?? $config.color.defaultColor;
+} else {
+  mainColor16 = $config.color.defaultColor;
+}
 const DEVICE = navigator.userAgent.match(
   /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|wOSBrowser|BrowserNG|WebOS)/i
 )
@@ -46,8 +89,7 @@ addMoveListen(dic_affix);
 
 $(function () {
   setTimeout(() => {
-    let theme = lightState ? "light" : "dark";
-    setTheme(theme);
+    setTheme(currentMode);
     setWater();
     setProgressBar();
     affix();
@@ -62,6 +104,7 @@ $(function () {
     setLightSwitch();
     headerTyping();
     drawCity();
+    $("#favicon").attr("href", $config.ico);
     $("#navigator").after(`        
     <div id="poetry">
     <p>莫听穿林打叶声，</p>
@@ -77,10 +120,7 @@ $(function () {
     // HEIGHT = window.innerHeight;
     setLoading();
   }, 500);
-  $("#blogLogo").attr(
-    "src",
-    "https://s3.bmp.ovh/imgs/2022/01/c5f97d8b0b788deb.png"
-  );
+  $("#blogLogo").attr("src", $config.avatar);
 });
 function headerTyping() {
   $("#blogTitle>h1,#blogTitle>h2").wrapAll("<div id='typeHello'></div>");
@@ -95,7 +135,7 @@ function headerTyping() {
     }, index * 300);
   });
   $("#navList").append(`
-  <li onclick="window.location.href='https://www.cnblogs.com/harria/'">Harria</li>
+  <li onclick="window.location.href='${$config.userLink}">Harria</li>
   `);
   $("#header").append(`
   <canvas id="header-canvas"></canvas>
@@ -301,15 +341,11 @@ function addMoveListen(f) {
 }
 function lightToggle() {
   console.log('"#light-switch input")', $("#light-switch input")[0].checked);
-  lightState = !lightState;
-  if (lightState) {
-    //变亮
-    setTheme("light");
-  } else {
-    setTheme("dark");
-    //变黑
+  currentMode = currentMode == "light" ? "dark" : "light";
+  setTheme(currentMode);
+  if ($config.mode.localStorage && $config.mode.defaultMode != "auto") {
+    localStorage.setItem("mode", currentMode);
   }
-  localStorage.setItem("lightState", lightState);
 }
 function setTheme(themeName) {
   console.log(
@@ -452,8 +488,10 @@ function LightenDarkenColor(col, amt) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 function setMaincolor() {
-  localStorage.setItem("mainColor16", mainColor16);
-  setTheme(`${lightState ? "light" : "dark"}`);
+  if ($config.color.localStorage) {
+    localStorage.setItem("mainColor16", mainColor16);
+  }
+  setTheme(currentMode);
 }
 function setLoading() {
   $(".post > .clear ").css("opacity", "0");
@@ -536,13 +574,13 @@ function setMusic() {
   style="position: fixed;
   top: 0;
   z-index: 100000;"
-  src="https://link.jscdn.cn/sharepoint/aHR0cHM6Ly8xZHJpdi1teS5zaGFyZXBvaW50LmNvbS86dTovZy9wZXJzb25hbC9zdG9yXzFkcml2X29ubWljcm9zb2Z0X2NvbS9FY3VPVnhMMjFEMU1ocEtGM3ROV0d3UUJyZ29tWUtMTmhJcm9JRlhZdTVDc1JB.mp3"
+  src=${$config.bgm.link}
   preload="auto" 
-  loop
+  ${$config.bgm.loop ? "loop" : ""}
   >
   </audio>
-`);
-  $("#bgMusic")[0].volume = 0.1;
+  `);
+  $("#bgMusic")[0].volume = $config.bgm.volume;
   $("#toggle")[0].addEventListener("click", () => {
     bgMusic = $("#bgMusic")[0];
     setTimeout(() => {
@@ -555,15 +593,17 @@ function setMusic() {
       }
     }, 500);
   });
-  setTimeout(() => {
-    $("#toggle").trigger("click");
-  }, 500);
+  if ($config.bgm.autoPlay) {
+    setTimeout(() => {
+      $("#toggle").trigger("click");
+    }, 500);
+  }
 }
 function setColor() {
   $("#home").append(`
   <div class="color-set">
   <svg t="1641804787342" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2622" width="200" height="200"><path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224l0 256c0 9.6 4.288 18.656 11.712 24.736 7.392 6.08 17.152 8.512 26.56 6.624L224 487.04 224 832c0 52.928 43.072 96 96 96l384 0c52.928 0 96-43.072 96-96l0-312.96 121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512L960 224C960 209.664 950.464 197.088 936.672 193.216zM672 800 352 800c-17.664 0-32-14.304-32-32s14.336-32 32-32l320 0c17.696 0 32 14.304 32 32S689.696 800 672 800z" p-id="2623"></path></svg>
-  <input type="color" id="main-color" value="#2175bc">
+  <input type="color" id="main-color" value=${$config.defaultColor}>
   </div>
   `);
   mainColorNode = $("#main-color")[0];
@@ -595,7 +635,7 @@ function setLightSwitch() {
 `);
   lightSwitchNode = $("#light-switch input")[0];
   lightSwitchNode.addEventListener("click", lightToggle);
-  lightSwitchNode.checked = !lightState;
+  lightSwitchNode.checked = currentMode != "light" ? true : false;
 }
 function setWater() {
   $("#water")
@@ -612,3 +652,202 @@ function setWater() {
   </g>
   </svg> `);
 }
+function getThemeDependDay(province) {
+  /**
+   * @Description:
+   * @Version: 0.1
+   * @Author: Harria
+   * @Date: 2022-01-12 15:47:46
+   * @LastEditors: Harria
+   * @LastEditTime: 2022-01-12 16:23:54
+   */
+  let address = {
+    山东: [117.000923, 36.675807],
+    河北: [115.48333, 38.03333],
+    吉林: [125.35, 43.88333],
+    黑龙江: [127.63333, 47.75],
+    辽宁: [123.38333, 41.8],
+    内蒙古: [111.670801, 41.818311],
+    新疆: [87.68333, 43.76667],
+    甘肃: [103.73333, 36.03333],
+    宁夏: [106.26667, 37.46667],
+    山西: [112.53333, 37.86667],
+    陕西: [108.95, 34.26667],
+    河南: [113.65, 34.76667],
+    安徽: [117.283042, 31.86119],
+    江苏: [119.78333, 32.05],
+    浙江: [120.2, 30.26667],
+    福建: [118.3, 26.08333],
+    广东: [113.23333, 23.16667],
+    江西: [115.9, 28.68333],
+    海南: [110.35, 20.01667],
+    广西: [108.320004, 22.82402],
+    贵州: [106.71667, 26.56667],
+    湖南: [113.0, 28.21667],
+    湖北: [114.298572, 30.584355],
+    四川: [104.06667, 30.66667],
+    云南: [102.73333, 25.05],
+    西藏: [91.0, 30.6],
+    青海: [96.75, 36.56667],
+    天津: [117.2, 39.13333],
+    上海: [121.55333, 31.2],
+    重庆: [106.45, 29.56667],
+    北京: [116.41667, 39.91667],
+    台湾: [121.3, 25.03],
+    香港: [114.1, 22.2],
+    澳门: [113.5, 22.2],
+  };
+  function computeSunRiseSunSet(Latitude, Longitude, TimeZone) {
+    var curTime = new Date();
+    // Variable names used: B5, C, C2, C3, CD, D, DR, H, HR, HS, L0, L5, M, MR, MS, N, PI, R1, RD, S1, SC, SD, str
+    var retVal = new Object();
+    var PI = Math.PI;
+    var DR = PI / 180;
+    var RD = 1 / DR;
+    var B5 = Latitude;
+    var L5 = Longitude;
+    var H = -1 * ((curTime.getTimezoneOffset() / 60) * -1); // Local timezone
+    // Overriding TimeZone to standardize on UTC
+    // H = 0;
+    var M = curTime.getMonth() + 1;
+    var D = curTime.getDate();
+    B5 = DR * B5;
+    var N = parseInt((275 * M) / 9) - 2 * parseInt((M + 9) / 12) + D - 30;
+    var L0 = 4.8771 + 0.0172 * (N + 0.5 - L5 / 360);
+    var C = 0.03342 * Math.sin(L0 + 1.345);
+    var C2 =
+      RD *
+      (Math.atan(Math.tan(L0 + C)) - Math.atan(0.9175 * Math.tan(L0 + C)) - C);
+    var SD = 0.3978 * Math.sin(L0 + C);
+    var CD = Math.sqrt(1 - SD * SD);
+    var SC = (SD * Math.sin(B5) + 0.0145) / (Math.cos(B5) * CD);
+    if (Math.abs(SC) <= 1) {
+      var C3 = RD * Math.atan(SC / Math.sqrt(1 - SC * SC));
+      var R1 = 6 - H - (L5 + C2 + C3) / 15;
+      var HR = parseInt(R1);
+      var MR = parseInt((R1 - HR) * 60);
+      retVal.SunRise = parseTime(HR + ":" + MR);
+      var TargetTimezoneOffset =
+        TimeZone * 60 * 60 * 1000 +
+        retVal.SunRise.getTimezoneOffset() * 60 * 1000;
+      var transformedSunRise = new Date(
+        retVal.SunRise.getTime() + TargetTimezoneOffset
+      );
+      var strSunRise =
+        "日出" +
+        transformedSunRise.getHours() +
+        ":" +
+        (transformedSunRise.getMinutes() < 10
+          ? "0" + transformedSunRise.getMinutes()
+          : transformedSunRise.getMinutes());
+      var S1 = 18 - H - (L5 + C2 - C3) / 15;
+      var HS = parseInt(S1);
+      var MS = parseInt((S1 - HS) * 60);
+      retVal.SunSet = parseTime(HS + ":" + MS);
+      var transformedSunSet = new Date(
+        retVal.SunSet.getTime() + TargetTimezoneOffset
+      );
+      var strSunSet =
+        "日落" +
+        transformedSunSet.getHours() +
+        ":" +
+        (transformedSunSet.getMinutes() < 10
+          ? "0" + transformedSunSet.getMinutes()
+          : transformedSunSet.getMinutes());
+      retVal.Noon = new Date(
+        (retVal.SunRise.getTime() + retVal.SunSet.getTime()) / 2
+      );
+      var transformedNoon = new Date(
+        retVal.Noon.getTime() + TargetTimezoneOffset
+      );
+      var strNoon =
+        "正午" +
+        transformedNoon.getHours() +
+        ":" +
+        (transformedNoon.getMinutes() < 10
+          ? "0" + transformedNoon.getMinutes()
+          : transformedNoon.getMinutes());
+    } else {
+      if (SC > 1) {
+        // str="Sun up all day";
+        strSunRise = ".";
+        strNoon = ".";
+        strSunSet = ".";
+        var tDate = new Date();
+        // Set Sunset to be in the future ...
+        retVal.SunSet = new Date(
+          tDate.getFullYear() + 1,
+          tDate.getMonth(),
+          tDate.getDay(),
+          tDate.getHours()
+        );
+        // Set Sunrise to be in the past ...
+        retVal.SunRise = new Date(
+          tDate.getFullYear() - 1,
+          tDate.getMonth(),
+          tDate.getDay(),
+          tDate.getHours() - 1
+        );
+      }
+      if (SC < -1) {
+        // str="Sun down all day";
+        strSunRise = ".";
+        strNoon = ".";
+        strSunSet = ".";
+        // Set Sunrise and Sunset to be in the future ...
+        retVal.SunRise = new Date(
+          tDate.getFullYear() + 1,
+          tDate.getMonth(),
+          tDate.getDay(),
+          tDate.getHours()
+        );
+        retVal.SunSet = new Date(
+          tDate.getFullYear() + 1,
+          tDate.getMonth(),
+          tDate.getDay(),
+          tDate.getHours()
+        );
+      }
+    }
+    retVal.strSunRise = strSunRise;
+    retVal.strNoon = strNoon;
+    retVal.strSunSet = strSunSet;
+    retVal.str = strSunRise + " | " + strNoon + " | " + strSunSet;
+    return retVal;
+  }
+
+  function parseTime(aTime) {
+    var aDateTimeObject = "none";
+    if (aTime !== undefined && aTime.length) {
+      aDateTimeObject = GMTTime();
+      try {
+        var theHour = parseInt(aTime.split(":")[0]);
+        var theMinutes = parseInt(aTime.split(":")[1]);
+        aDateTimeObject.setHours(theHour);
+        aDateTimeObject.setMinutes(theMinutes);
+      } catch (ex) {}
+    }
+    return aDateTimeObject;
+  }
+
+  function GMTTime() {
+    var aDate = new Date();
+    var aDateAdjustedToGMTInMS =
+      aDate.getTime() + aDate.getTimezoneOffset() * 60 * 1000;
+    return new Date(aDateAdjustedToGMTInMS);
+  }
+  let { SunRise, SunSet } = computeSunRiseSunSet(
+    address[province][1],
+    address[province][0],
+    8
+  );
+  const now = new Date();
+
+  if (SunRise.getTime() < now.getTime() && now.getTime() < SunSet.getTime()) {
+    return "light";
+  } else {
+    return "dark";
+  }
+}
+
+// console.log(getThemeDependDay("上海"));
