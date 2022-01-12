@@ -64,16 +64,6 @@
 后面的hljs都是代码高亮样式
 
 ```css
-/* .postBody > .clear {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(240, 255, 255);
-  opacity: 1;
-  transition: opacity 1s;
-} */
 .post > .clear {
   position: fixed;
   top: 0;
@@ -195,6 +185,80 @@ span.cnb-code-toolbar-item:hover {
 }
 
 ```
+
+## 配置参数
+
+### index.js文件顶部
+
+``` js
+let $config = {
+  avatar: "https://s3.bmp.ovh/imgs/2022/01/c5f97d8b0b788deb.png",
+  userLink: "https://www.cnblogs.com/harria/'",
+  ico: "https://files.cnblogs.com/files/blogs/723350/xia.svg",
+  bgm: {
+    link: "https://music.163.com/song/media/outer/url?id=1312528250.mp3",
+    autoPlay: 1,
+    loop: 1,
+    volume: 0.1, // 0~1
+  },
+  color: {
+    defaultColor: "#202020",
+    localStorage: 1,
+  },
+  mode: {
+    defaultMode: "dark", // light | dark | auto
+    localStorage: 1, // 0 | 1
+    province: "上海",
+  },
+};
+```
+
+### 参数含义
+
+#### avatar
+
+- 类型：`String`
+- 默认值：`null`
+
+头像的地址
+
+#### userLink
+
+- 类型：`String`
+- 默认值：`null`
+
+用户主页的地址
+
+#### ico
+
+- 类型：`String`
+- 默认值：`null`
+
+标签页前面的图标地址
+
+#### bgm
+
+| 名称     | 类型     | 默认值/实例 | 描述                     |
+| :------- | :------- | :---------- | :----------------------- |
+| link     | `String` |             | 背景音乐直链             |
+| autoPlay | `Number` |             | 是否在加载好之后自动播放 |
+| loop     | `Number` |             | 是否循环播放             |
+| volume   | `Number` |             | 音量大小                 |
+
+#### color
+
+| 名称         | 类型     | 默认值/实例 | 描述             |
+| :----------- | :------- | :---------- | :--------------- |
+| defaultColor | `String` |             | 默认主题颜色     |
+| localStorage | `Number` |             | 是否使用本地存储 |
+
+#### mode
+
+| 名称         | 类型     | 默认值/实例 | 描述             |
+| :----------- | :------- | :---------- | :--------------- |
+| defaultMode  | `String` |             | 默认明暗模式     |
+| localStorage | `Number` |             | 是否使用本地存储 |
+| province     | `String` |             | 所使用省份       |
 
 ## 页脚HTML代码
 
