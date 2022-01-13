@@ -985,10 +985,10 @@ a:visited {
 }
 @keyframes move-forever {
   0% {
-    transform: translate3d(-90px, 0, 0);
+    transform: translateX(-90px);
   }
   100% {
-    transform: translate3d(85px, 0, 0);
+    transform: translateX(85px);
   }
 }
 /* 左上角的菜单*/

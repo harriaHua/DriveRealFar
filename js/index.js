@@ -4,7 +4,7 @@
  * @Author: Harria
  * @Date: 2021-12-31 12:01:36
  * @LastEditors: Harria
- * @LastEditTime: 2022-01-13 13:15:08
+ * @LastEditTime: 2022-01-13 13:39:06
  */
 // import "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js";
 let $config = {
@@ -280,15 +280,12 @@ function directory() {
   function catalogTrack() {
     setTimeout(() => {
       const scrollTop = $(document).scrollTop();
-      nodes.forEach((element) => {
+      for (const element of nodes) {
         if ($(element).offset().top <= scrollTop + 20) {
-          console.log(element, getElementToPageTop(element), scrollTop + 400);
+          // console.log(element, getElementToPageTop(element), scrollTop + 400);
           // console.log($(`.all-directory`));
 
-          $(`.all-directory`).each(function (index, element) {
-            // element == this
-            $(element).removeClass("all-directory-active");
-          });
+          $(`.all-directory-active`).removeClass("all-directory-active");
           let currentCatalog = $(
             `.all-directory[htitle="${$(element).attr("id")}"]`
           );
@@ -297,8 +294,8 @@ function directory() {
             behavior: "auto",
             block: "center",
           });
-        }
-      });
+        } else break;
+      }
     }, 200);
   }
   addMoveListen(catalogTrack);
