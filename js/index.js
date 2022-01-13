@@ -4,7 +4,7 @@
  * @Author: Harria
  * @Date: 2021-12-31 12:01:36
  * @LastEditors: Harria
- * @LastEditTime: 2022-01-13 13:39:06
+ * @LastEditTime: 2022-01-13 14:30:04
  */
 // import "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js";
 let $config = {
@@ -605,7 +605,7 @@ function setColor() {
   $("#home").append(`
   <div class="color-set">
   <svg t="1641804787342" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2622" width="200" height="200"><path d="M936.672 193.216l-226.88-64c-8.704-2.528-18.112-1.12-25.824 3.776-7.68 4.864-12.896 12.736-14.432 21.728C655.712 236.928 595.328 288 512 288c-71.424 0-142.464-103.296-163.776-143.104-7.136-13.28-22.528-19.84-37.024-15.68l-224 64C73.472 197.152 64 209.728 64 224l0 256c0 9.6 4.288 18.656 11.712 24.736 7.392 6.08 17.152 8.512 26.56 6.624L224 487.04 224 832c0 52.928 43.072 96 96 96l384 0c52.928 0 96-43.072 96-96l0-312.96 121.728 24.352c9.44 1.92 19.2-0.544 26.56-6.624C955.68 530.656 960 521.6 960 512L960 224C960 209.664 950.464 197.088 936.672 193.216zM672 800 352 800c-17.664 0-32-14.304-32-32s14.336-32 32-32l320 0c17.696 0 32 14.304 32 32S689.696 800 672 800z" p-id="2623"></path></svg>
-  <input type="color" id="main-color" value=${$config.defaultColor}>
+  <input type="color" id="main-color" value=${$config.color.defaultColor}>
   </div>
   `);
   mainColorNode = $("#main-color")[0];
