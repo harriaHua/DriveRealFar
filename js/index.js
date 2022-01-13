@@ -4,7 +4,7 @@
  * @Author: Harria
  * @Date: 2021-12-31 12:01:36
  * @LastEditors: Harria
- * @LastEditTime: 2022-01-12 17:30:38
+ * @LastEditTime: 2022-01-13 11:59:50
  */
 // import "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js";
 let $config = {
@@ -289,10 +289,14 @@ function directory() {
             // element == this
             $(element).removeClass("all-directory-active");
           });
-
-          $(`.all-directory[htitle="${$(element).attr("id")}"]`).addClass(
-            "all-directory-active"
+          let currentCatalog = $(
+            `.all-directory[htitle="${$(element).attr("id")}"]`
           );
+          currentCatalog.addClass("all-directory-active");
+          currentCatalog[0].scrollIntoView({
+            behavior: "auto",
+            block: "center",
+          });
         }
       });
     }, 200);

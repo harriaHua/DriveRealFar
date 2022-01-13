@@ -752,7 +752,8 @@ a:visited {
 #home #main #mainContent .forFlow #comment_form #under_post_card2 {
   display: none;
 }
-#home #cnblogs_c1 {
+#home #cnblogs_c1,
+#home #cnblogs_c2 {
   display: none;
 }
 #home code {
