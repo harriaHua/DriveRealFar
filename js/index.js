@@ -4,7 +4,7 @@
  * @Author: Harria
  * @Date: 2021-12-31 12:01:36
  * @LastEditors: Harria
- * @LastEditTime: 2022-01-13 11:59:50
+ * @LastEditTime: 2022-01-13 13:15:08
  */
 // import "https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js";
 let $config = {
@@ -335,13 +335,14 @@ function getElementToPageTop(el) {
   return el.offsetTop;
 }
 function addMoveListen(f) {
-  if (document.addEventListener) {
-    //firefox
-    document.addEventListener("DOMMouseScroll", f, false);
-  }
-  window.addEventListener("mousewheel", f);
-  document.addEventListener("touchend", f);
-  document.addEventListener("touchmove", f);
+  // if (document.addEventListener) {
+  //   //firefox
+  //   document.addEventListener("DOMMouseScroll", f, false);
+  // }
+  // window.addEventListener("mousewheel", f);
+  // document.addEventListener("touchend", f);
+  // document.addEventListener("touchmove", f);
+  window.addEventListener("scroll", f);
 }
 function lightToggle() {
   console.log('"#light-switch input")', $("#light-switch input")[0].checked);

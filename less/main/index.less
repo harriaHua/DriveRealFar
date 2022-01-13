@@ -113,20 +113,48 @@ pre {
     cursor: pointer;
     padding-left: 10px;
   }
+  // .all-directory[data-level="1"] {
+  counter-reset: h2;
+  // }
   .all-directory[data-level="2"] {
     margin-left: 20px;
+    counter-reset: h3;
+    &:before {
+      counter-increment: h2;
+      content: counter(h2) " ";
+    }
   }
   .all-directory[data-level="3"] {
     margin-left: 30px;
+    counter-reset: h4;
+    &:before {
+      counter-increment: h3;
+      content: counter(h2) "." counter(h3) " ";
+    }
   }
   .all-directory[data-level="4"] {
     margin-left: 40px;
+    counter-reset: h5;
+    &:before {
+      counter-increment: h4;
+      content: counter(h2) "." counter(h3) "." counter(h4) " ";
+    }
   }
   .all-directory[data-level="5"] {
     margin-left: 50px;
+    counter-reset: h6;
+    &:before {
+      counter-increment: h5;
+      content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+    }
   }
   .all-directory[data-level="6"] {
     margin-left: 60px;
+    &:before {
+      counter-increment: h6;
+      content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "."
+        counter(h6) " ";
+    }
   }
   .all-directory-active {
     border-left: var(--main-color) solid 4px;

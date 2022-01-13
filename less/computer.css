@@ -502,6 +502,7 @@ a:visited {
 }
 #home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body {
   font-size: 14px;
+  counter-reset: h2;
 }
 #home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body blockquote {
   border-left: 5px solid var(--deputy-color);
@@ -534,6 +535,38 @@ a:visited {
 #home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body p {
   margin: 10px auto;
   text-indent: 0;
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h2 {
+  counter-reset: h3;
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h3 {
+  counter-reset: h4;
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h4 {
+  counter-reset: h5;
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h5 {
+  counter-reset: h6;
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h2:before {
+  counter-increment: h2;
+  content: counter(h2) " ";
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h3:before {
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3) " ";
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h4:before {
+  counter-increment: h4;
+  content: counter(h2) "." counter(h3) "." counter(h4) " ";
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h5:before {
+  counter-increment: h5;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+}
+#home #main #mainContent .forFlow #post_detail #topics .post .postBody #cnblogs_post_body h6:before {
+  counter-increment: h6;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " ";
 }
 #home #main #mainContent .forFlow #post_detail #topics .post .postBody #blog_post_info_block {
   border-bottom: 3px solid var(--boder-color);
@@ -810,6 +843,7 @@ a:visited {
   max-height: calc(100vh - 160px);
   overflow-y: scroll;
   transition: top 0.3s;
+  counter-reset: h2;
 }
 #home #my-directory .all-directory {
   margin: 10px;
@@ -818,18 +852,42 @@ a:visited {
 }
 #home #my-directory .all-directory[data-level="2"] {
   margin-left: 20px;
+  counter-reset: h3;
+}
+#home #my-directory .all-directory[data-level="2"]:before {
+  counter-increment: h2;
+  content: counter(h2) " ";
 }
 #home #my-directory .all-directory[data-level="3"] {
   margin-left: 30px;
+  counter-reset: h4;
+}
+#home #my-directory .all-directory[data-level="3"]:before {
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3) " ";
 }
 #home #my-directory .all-directory[data-level="4"] {
   margin-left: 40px;
+  counter-reset: h5;
+}
+#home #my-directory .all-directory[data-level="4"]:before {
+  counter-increment: h4;
+  content: counter(h2) "." counter(h3) "." counter(h4) " ";
 }
 #home #my-directory .all-directory[data-level="5"] {
   margin-left: 50px;
+  counter-reset: h6;
+}
+#home #my-directory .all-directory[data-level="5"]:before {
+  counter-increment: h5;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
 }
 #home #my-directory .all-directory[data-level="6"] {
   margin-left: 60px;
+}
+#home #my-directory .all-directory[data-level="6"]:before {
+  counter-increment: h6;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) " ";
 }
 #home #my-directory .all-directory-active {
   border-left: var(--main-color) solid 4px;
