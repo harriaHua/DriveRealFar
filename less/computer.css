@@ -749,6 +749,9 @@ a:visited {
 }
 #home #main #mainContent .forFlow #comment_form #comment_form_container .comment_textarea {
   width: 100%;
+  border: 1px solid var(--blockquote-back-color);
+  background-color: var(--blockquote-back-color);
+  transition: background 0.3s, border-color 0.3s;
 }
 #home #main #mainContent .forFlow #comment_form #comment_form_container .comment_textarea #tbCommentBody {
   background: url(https://s3.bmp.ovh/imgs/2022/01/b3726b991a55fee7.png);
@@ -997,16 +1000,9 @@ a:visited {
   top: 6px;
   left: 31px;
   z-index: 1111;
-  background-color: var(--blockquote-back-color);
   padding: 6px;
   border-radius: 6px;
   transition: all 0.3s;
-}
-.menu-button:hover {
-  background-color: var(--main-color);
-}
-.menu-button:hover .hamburger-lines .line {
-  background-color: var(--blockquote-back-color);
 }
 .menu-button .checkbox {
   position: relative;
@@ -1034,8 +1030,8 @@ a:visited {
   height: 4px;
   width: 100%;
   border-radius: 10px;
-  background-color: var(--main-color);
-  border: 1px var(--word-color) solid;
+  background-color: var(--word-color);
+  border: 1px var(--blockquote-back-color) solid;
 }
 .menu-button .hamburger-lines .line1 {
   transform-origin: 0% 0%;
