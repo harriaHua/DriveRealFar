@@ -13,19 +13,19 @@
     box-shadow: none;
     background: none;
     .forFlow {
-      @import url("otherBody.less");
+      @import url("less/otherBody.less");
       padding: 32px;
 
       #post_detail {
         #topics {
           .post {
-            @import url("title.less");
+            @import url("less/title.less");
             .postBody {
               clear: both;
               margin-top: 26px;
               line-height: 1.8;
-              @import url("body.less");
-              @import url("info.less");
+              @import url("less/body.less");
+              @import url("less/info.less");
             }
             .postDesc {
               line-height: 1.8;
@@ -37,7 +37,7 @@
           }
         }
       }
-      @import url("comment.less");
+      @import url("less/comment.less");
     }
   }
 }
